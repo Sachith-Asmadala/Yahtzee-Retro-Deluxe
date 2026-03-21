@@ -1,44 +1,60 @@
 # Yahtzee Retro Deluxe
 
-A retro-style terminal Yahtzee game written entirely in **C** using the **ncurses** library.
-This project brings the classic Yahtzee experience to the command line with animated dice rolls, colored UI panels, score previews, pause menus, event logs, and a computer opponent with smarter decision-making.
+A retro-style **Yahtzee terminal game written in C** using the **ncurses** library.  
+This project recreates the classic dice game in a colorful command-line interface with animated rolls, score previews, category selection, and a smarter AI opponent.
+
+## Overview
+
+**Yahtzee Retro Deluxe** is a terminal-based implementation of Yahtzee designed to showcase core C programming concepts through an interactive game. The project combines classic gameplay rules with a retro user interface, keyboard-driven controls, and simple AI strategy to create a fun and polished command-line experience.
+
+This project was built to practice:
+
+- procedural programming in C
+- terminal UI development with ncurses
+- game loop design
+- scoring logic and state management
+- input handling and menu systems
+- basic AI decision-making
 
 ## Features
 
-- Built using **pure C**
-- Terminal-based interface powered by **ncurses**
-- Retro-style animated gameplay
-- Full **Yahtzee scoring system**
-- Interactive dice holding and rerolling
-- Category score preview before selecting
-- Keyboard shortcuts for fast scoring
-- Pause menu with resume, restart, and quit options
-- Event log for turn-by-turn updates
-- Smarter computer AI with strategy-based rerolls
-- Colored terminal UI (when supported)
+- Full **Yahtzee gameplay** across 13 rounds
+- Built entirely in **C**
+- **ncurses-based** retro terminal interface
+- Animated dice roll effects
+- Dice hold/unhold system
+- Real-time score preview for available categories
+- Full scoreboard for player and computer
+- Event log for gameplay updates
+- Pause menu with resume, restart, and quit
+- Keyboard shortcuts for faster category selection
+- Smarter AI opponent with category-based reroll planning
+- Color support for compatible terminals
 
 ## Gameplay
 
-The game is played over **13 rounds**.
-In each round:
+The game is played over **13 rounds**.  
+Each round consists of:
 
-1. Roll 5 dice
-2. Choose which dice to hold
-3. Reroll the remaining dice up to 2 times
-4. Select a scoring category
+1. Rolling 5 dice
+2. Choosing which dice to hold
+3. Rerolling the remaining dice up to 2 times
+4. Selecting a scoring category
 
-At the end of 13 rounds, the player with the highest total score wins.
+Once a category is used, it cannot be selected again.  
+After all 13 categories are filled, the game ends and the final scores are compared.
 
 ## Scoring Categories
 
-The game includes all standard Yahtzee categories:
-
+### Upper Section
 - Ones
 - Twos
 - Threes
 - Fours
 - Fives
 - Sixes
+
+### Lower Section
 - Three of a Kind
 - Four of a Kind
 - Full House
@@ -49,18 +65,14 @@ The game includes all standard Yahtzee categories:
 
 ## Controls
 
-### In-game controls
+### Main Controls
+- `LEFT / RIGHT` — move between dice
+- `SPACE` — hold or unhold selected die
+- `R` — reroll unheld dice
+- `C` — open category selection menu
+- `P` — open pause menu
 
-- `LEFT / RIGHT` — Move between dice
-- `SPACE` — Hold or unhold selected die
-- `R` — Reroll unheld dice
-- `C` — Open category selection menu
-- `P` — Open pause menu
-
-### Quick score keys
-
-You can directly choose categories using shortcut keys:
-
+### Quick Category Shortcuts
 - `1` → Ones
 - `2` → Twos
 - `3` → Threes
@@ -77,92 +89,90 @@ You can directly choose categories using shortcut keys:
 
 ## Requirements
 
-- C compiler such as **gcc**
-- **ncurses** library installed
-- Terminal size of at least **110x30**
+To build and run this project, you need:
 
-## Compilation
+- a C compiler such as `gcc`
+- the `ncurses` library
+- a terminal window with a minimum size of **110 x 30**
+
+## Build
 
 Compile the program with:
 
 ```bash
 gcc yahtzee.c -o yahtzee -lncurses
-Running the Game
 
-After compiling, run:
+Run
 
+After compilation, run:
 ./yahtzee
-Example
 
-When the game starts, you will see a retro-style menu with options to:
-
-Start Game
-View How to Play
-Quit
-
-During gameplay, the interface includes:
-
-Dice display panel
-Category preview panel
-Scoreboard
-Event log
-Control/help section
 Project Structure
 
-This project is currently implemented in a single C source file and includes:
+The current version is implemented as a single C source file and includes:
 
-Game state management
-Dice rolling and holding system
-Score calculation functions
-Computer AI logic
-Terminal UI rendering
-Menus, dialogs, and animations
-AI Behavior
+game state initialization and round handling
+scoring functions for all categories
+player interaction and reroll logic
+AI reroll planning and category selection
+ncurses-based window rendering
+popups, menus, dialogs, and animations
+AI Opponent
 
-The computer opponent does more than choose random rerolls.
-It uses strategy-based planning to aim for categories such as:
+The computer player uses simple decision logic instead of random choices.
+It evaluates the current dice and attempts to aim for useful scoring categories such as:
 
-Upper section scores
-Three/Four of a Kind
-Full House
-Small Straight
-Large Straight
-Yahtzee
-Chance
+upper section matches
+three of a kind
+four of a kind
+full house
+small straight
+large straight
+yahtzee
+chance
 
-This makes the gameplay more dynamic and competitive.
+This makes gameplay more interesting and gives the project a stronger game-logic component.
 
-Notes
-The game uses ncurses, so it should be run in a compatible terminal.
-Colored output depends on terminal color support.
-If your terminal window is too small, the game will ask you to resize it before running.
+Interface Panels
+
+The terminal UI is divided into multiple sections:
+
+Header — round number and total scores
+Dice Window — current dice values and held dice
+Preview Panel — possible category scores for the current roll
+Scoreboard — player and computer score tracking
+Event Log — recent gameplay actions
+Help Panel — controls and status messages
+Why This Project
+
+This project is a good demonstration of how traditional C programming can be used to create a complete interactive application without relying on modern game engines or graphical frameworks.
+
+It highlights:
+
+clean function-based design
+real-time terminal rendering
+rule-based scoring systems
+interactive gameplay in a console environment
 Future Improvements
 
-Possible enhancements for this project:
+Planned or possible future enhancements:
 
-Upper section bonus support
-Yahtzee bonus rules
-Save/load game feature
-Two-player mode
-Sound improvements
-Better end-game statistics
-Cross-platform build instructions
-Learning Goals
+upper-section bonus support
+yahtzee bonus rules
+save/load functionality
+two-player mode
+improved end-game statistics
+modular multi-file project structure
+cross-platform build instructions
+Repository Description
 
-This project is a good example of practicing:
+Retro-style Yahtzee game in C using ncurses, featuring animated terminal gameplay, score previews, and a smarter AI opponent.
 
-Procedural programming in C
-Terminal UI development with ncurses
-Array and function pointer usage
-Game loop design
-Input handling
-Basic AI decision-making
 License
 
-This project is open-source and available under the MIT License.
+This project is available under the MIT License.
+Add a LICENSE file if you want to officially publish it under MIT.
 
 Author
 
-Developed as a retro Yahtzee game project in C.
-
-
+Created by Sachith as a C programming project focused on terminal UI, game logic, and interactive gameplay.
