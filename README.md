@@ -100,12 +100,16 @@ To build and run this project, you need:
 Compile the program with:
 
 ```bash
-gcc yahtzee.c -o yahtzee -lncurses
+gcc Yahtzee.c -o yahtzee -lncurses
+```
 
-Run
+## Run
 
 After compilation, run:
+
+```bash
 ./yahtzee
+```
 
 Project Structure
 
