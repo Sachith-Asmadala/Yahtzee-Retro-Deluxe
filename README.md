@@ -1,5 +1,7 @@
 # Yahtzee Retro Deluxe
 
+[Code walkthrough and interview questions](docs/INTERVIEW_GUIDE.md).
+
 A retro-style **Yahtzee terminal game written in C** using the **ncurses** library.  
 This project recreates the classic dice game in a colorful command-line interface with animated rolls, score previews, category selection, and a smarter AI opponent.
 
